@@ -1,11 +1,21 @@
 #include <vector>
+#import "../Models/Career.cpp"
+#import "../Models/Subject.cpp"
+#import "../Models/Individual.cpp"
 
 class EvolutionaryAlgorithm {
 public:
   std::pair<std::vector<unsigned int>, float> perform(unsigned int maxGenerations);
 private:
-  unsigned int max_population_size;
+  unsigned int populationSize;
   float gamma;
+  unsigned int initialDay;
+  unsigned int finalDay;
+  
+  std::vector<Career> careers;
+  std::vector<Subject> subjects;
+  
+  std::vector<Individual> population;
   
   void genesis();
   void fitness(std::vector<std::vector<int>> &population);
