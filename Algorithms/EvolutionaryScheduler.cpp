@@ -3,12 +3,17 @@
 
 #include <EvolutionaryScheduler.hpp>
 
+#import "../Utils/RandomUtils.hpp"
+
 void EvolutionaryAlgorithm::genesis(){
-  population = std::vector<Individual>(populationSize, Individual(careers.size()))
+  population = std::vector<Individual>(populationSize, Individual(careers.size()));
   
-  for(Individual &currentIndividual: population){
-    
-  }
+  for(Individual &currentIndividual: population)
+    for(int i=0; i<currentIndividual.individual.size(); i++)
+      if(i<careers.size())
+        currentIndividual.individual[i] = RandomUtils.getInstance()->uniformRandInt(initialDay, finalDay);
+      else
+        currentIndividual.individual[i] = RandomUtils.getInstance()->uniformRandInt(0, finalDay/4);
   
 }
 
