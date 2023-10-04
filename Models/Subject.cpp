@@ -1,19 +1,22 @@
 #include <vector>
 #include <string>
+#include "./Career.cpp"
 
 struct Subject{
   std::string name;
   unsigned int id;
   float difficulty;
+  bool isHumanities;
   
   std::vector<unsigned int> scheduledDays;
-  std::vector<unsigned int> assignedCareersIds;
+  std::vector<Career> &assignedCareers;
   
-  Subject(std::string name, float difficulty, std::vector<unsigned int> scheduledDays, std::vector<unsigned int> assignedCareersIds){
+  Subject(std::string name, float difficulty, std::vector<unsigned int> scheduledDays, std::vector<Career> &assignedCareers, bool isHumanities){
     this->name = name;
     this->difficulty = difficulty;
     this->scheduledDays = scheduledDays;
-    this->assignedCareersIds = assignedCareersIds;
+    this->assignedCareers = assignedCareers;
+    this->isHumanities = isHumanities;
   }
 };
 

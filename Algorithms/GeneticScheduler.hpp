@@ -1,29 +1,30 @@
 #include <vector>
-#import "../Models/Career.cpp"
-#import "../Models/Subject.cpp"
-#import "../Models/Individual.cpp"
+#include "../Models/Career.cpp"
+#include "../Models/Subject.cpp"
+#include "../Models/Individual.cpp"
 
-class EvolutionaryAlgorithm {
+class GeneticAlgorithm {
 public:
-  std::pair<std::vector<unsigned int>, float> perform(unsigned int maxGenerations);
+  std::pair<std::vector<Individual>, float> perform(unsigned int maxGenerations);
 private:
   unsigned int populationSize;
-  float gamma;
   unsigned int initialDay;
   unsigned int finalDay;
   
-  std::vector<Career> careers;
-  std::vector<Subject> subjects;
+  std::vector<Career> &careers;
+  std::vector<Subject> &subjects;
   
   std::vector<Individual> population;
   
+  std::pair<Individual&, float> elite;
+  
   void genesis();
-  void fitness(std::vector<Individual> &population);
-  void mutation(std::vector<Individual> &population);
-  void survivorSelection(std::vector<Individual> &population);
-  float newSigma(float currentSigma);
-  unsigned int newScheduledDay(unsigned int currentScheduledDay, float sigma);
-  float calculateSolutionScore(Individual &solution);
+  void fitness();
+  void mutation(Individual &individual); // Swap mutation
+  Individual crossover(Individual &parent1, Individual &parent2); // 1 Point crossover
+  Individual &binaryTournament(Individual &parent1, Individual &parent2);
+  void survivorSelection();
+  float calculateSolutionFitness(Individual &solution);
 };
 
 

@@ -17,19 +17,20 @@ void EvolutionaryAlgorithm::genesis(){
   
 }
 
-void EvolutionaryAlgorithm::fitness(int){
+void EvolutionaryAlgorithm::fitness(std::vector<Individual> &population){
+  // Based on no harder exams on adjacent days and amount of exams on the same day
+  
+}
+
+void EvolutionaryAlgorithm::mutation(std::vector<Individual> &population){
   //TODO
 }
 
-void EvolutionaryAlgorithm::mutation(int){
+void EvolutionaryAlgorithm::survivorSelection(std::vector<Individual> &population){
   //TODO
 }
 
-void EvolutionaryAlgorithm::survivorSelection(int){
-  //TODO
-}
-
-float EvolutionaryAlgorithm::calculateSolutionScore(int &solution){
+float EvolutionaryAlgorithm::calculateSolutionScore(Individual &solution){
   //TODO
 }
 
