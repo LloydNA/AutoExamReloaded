@@ -6,6 +6,6 @@ struct Individual{
 	float fitnessScore;
 	
 	Individual(int individualsAmount){
-		individual = std::vector<int>(individualsAmount * 2, 0);
+		individual = std::vector<int>(individualsAmount, 0);
 	}
 };
