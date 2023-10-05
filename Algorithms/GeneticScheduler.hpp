@@ -18,12 +18,12 @@ private:
   
   std::pair<Individual&, float> elite;
   
-  void genesis();
+  void genesis(std::vector<Individual>&);
   void fitness();
   void mutation(Individual&); // Swap mutation
   Individual crossover(Individual&, Individual&); // 1 Point crossover
   Individual &binaryTournament();
-  void survivorSelection();
+  void survivorSelection(std::vector<Individual>&);
   float calculateSolutionFitness(Individual &solution);
 };
 
