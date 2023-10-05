@@ -67,3 +67,16 @@ Individual GeneticAlgorithm::crossover(Individual &parent1, Individual &parent2)
   
   return newIndividual;
 }
+
+Individual &GeneticAlgorithm::binaryTournament(){
+  int randomIndex1 = rand() % populationSize;
+  int randomIndex2 = rand() % populationSize;
+  
+  while(randomIndex1 == randomIndex2)
+    randomIndex2 = rand() % populationSize;
+  
+  Individual &parent1 = population[randomIndex1];
+  Individual &parent2 = population[randomIndex2];
+  
+  return parent1 > parent2 ? parent1 : parent2;
+}
