@@ -52,3 +52,18 @@ void GeneticAlgorithm::mutation(Individual &individual){
   
   std::swap(individual.individual[randomIndex1], individual.individual[randomIndex2]);
 }
+
+Individual GeneticAlgorithm::crossover(Individual &parent1, Individual &parent2){
+  unsigned int sz = subjects.size();
+  
+  int randomIndex1 = rand() % (sz - 1) + 1;
+  
+  std::vector<int> fusedIndividual;
+  
+  fusedIndividual.insert(fusedIndividual.end(), parent1.individual.begin(), parent1.individual.begin() + randomIndex1); //[)
+  fusedIndividual.insert(fusedIndividual.end(), parent2.individual.begin() + randomIndex1, parent2.individual.end()); 
+  
+  Individual newIndividual(fusedIndividual);
+  
+  return newIndividual;
+}

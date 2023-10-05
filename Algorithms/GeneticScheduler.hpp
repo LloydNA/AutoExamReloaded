@@ -36,7 +36,3 @@ private:
 //It will be changed to the nearest scheduled day for that subject
 
 //Consider day 0, as monday of the first week, day 5 as saturday of first week, day 6 as monday of second week, and lastly day 11 as saturday of second week
-
-//This algorithm will be similar to Sin prediction one, we will have a constant modifier (gamma) for each sigma, and each sigma will be the origin for a gaussian distribution
-//To select scheduled day.
-//Maybe an evolutionary algorithm is not the most efficient approach for a scheduling, but it's worth trying =)
