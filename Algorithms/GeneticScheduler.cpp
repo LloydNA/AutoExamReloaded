@@ -33,3 +33,22 @@ void GeneticAlgorithm::genesis(){
   }
     
 }
+
+void GeneticAlgorithm::fitness(){
+  
+}
+
+void GeneticAlgorithm::mutation(Individual &individual){
+  unsigned int sz = subjects.size();
+  
+  int randomIndex1 = rand() % sz;
+  int randomIndex2 = rand() % sz;
+  
+  while(subjects[randomIndex1].isHumanities) // Ensure that we are not touching humanities
+    randomIndex1 = rand() % sz;
+  
+  while(randomIndex1 == randomIndex2 || subjects[randomIndex2].isHumanities)
+    randomIndex2 = rand() % sz;
+  
+  std::swap(individual.individual[randomIndex1], individual.individual[randomIndex2]);
+}
