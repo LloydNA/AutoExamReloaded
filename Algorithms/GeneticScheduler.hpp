@@ -18,21 +18,21 @@ private:
   
   std::pair<Individual&, float> elite;
   
-  void genesis(std::vector<Individual>&);
-  void fitness();
+  void genesis();
+  void fitness(std::vector<Individual>&);
   void mutation(Individual&); // Swap mutation
   Individual crossover(Individual&, Individual&); // 1 Point crossover
   Individual &binaryTournament();
   void survivorSelection(std::vector<Individual>&);
-  float calculateSolutionFitness(Individual &solution);
+  void calculateSolutionFitness(Individual&);
 };
 
 
 //Genome (candidate solution) -> vector<int> -> a vector of size n where n is the number of careers, each value is in range of [0, m) where m represents the amount
 //of days in the calendar exams.
 
-//GenomeModifier -> vector<int> -> a vector of same size as Genome, however, each value in this vector will be the sigma which will determine the center of a
-//Gausssian distribution to select a random number as scheduled day for the corresponding day, if the selected random number is not in a scheduled day for that subject,
-//It will be changed to the nearest scheduled day for that subject
-
 //Consider day 0, as monday of the first week, day 5 as saturday of first week, day 6 as monday of second week, and lastly day 11 as saturday of second week
+
+//Consider every scheduled exam with a score of 10 - exams_on_same_day_per_career - 2(if a day before an easier exam took place) - 2(if a day after a harder exam takes place)
+//This fitness rule it's meant to keep the least amount of shared days for exams, and to avoid an increasing difficulty curve
+//For now just exams_on_same_day_per_career will be used

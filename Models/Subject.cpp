@@ -4,7 +4,6 @@
 
 struct Subject{
   std::string name;
-  unsigned int id;
   float difficulty;
   bool isHumanities;
   
@@ -19,5 +18,3 @@ struct Subject{
     this->isHumanities = isHumanities;
   }
 };
-
-//TODO: Id manager to avoid repeated ids
