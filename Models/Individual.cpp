@@ -8,11 +8,13 @@ struct Individual{
 	Individual(int individualsAmount){
 		individual = std::vector<int>(individualsAmount, 0);
 		this->individualsAmount = individualsAmount;
+		fitnessScore = 0.0;
 	}
 	
 	Individual(std::vector<int> individual){
 		individualsAmount = individual.size();
 		this->individual = individual;
+		fitnessScore = 0.0;
 	}
 	
 	bool operator<(const Individual& a){

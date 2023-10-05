@@ -36,7 +36,19 @@ void GeneticAlgorithm::genesis(){
 }
 
 void GeneticAlgorithm::fitness(std::vector<Individual> &population){
-  
+  for(Individual &a:population)
+    calculateSolutionFitness(a);
+}
+
+void GeneticAlgorithm::calculateSolutionFitness(Individual &solution){
+  for(int i=0; i<solution.individualsAmount; i++){
+    solution.fitnessScore = 10.0;
+    
+    for(Career &a: subjects[i].assignedCareers){ //exams_on_same_day criteria
+      // change how to calculate exams per day per career per solution
+    }
+    
+  }
 }
 
 void GeneticAlgorithm::mutation(Individual &individual){
