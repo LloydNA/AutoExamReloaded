@@ -6,10 +6,13 @@
 
 #include "../Utils/RandomUtils.hpp"
 
-GeneticAlgorithm::GeneticAlgorithm(unsigned int populationSize, unsigned int initialDay, unsigned int finalDay, std::vector<Career> &careers, std::vector<Subject> &subjects){
+GeneticAlgorithm::GeneticAlgorithm(unsigned int populationSize, unsigned int initialDay, unsigned int finalDay, unsigned int crossoverProbability, unsigned int mutationProbability, std::vector<Career> &careers, std::vector<Subject> &subjects){
   this->populationSize = populationSize;
   this->initialDay = initialDay;
   this->finalDay = finalDay;
+  
+  this->crossoverProbability = crossoverProbability;
+  this->mutationProbability = mutationProbability;
   
   this->careers = careers;
   this->subjects = subjects;
@@ -103,4 +106,31 @@ void GeneticAlgorithm::survivorSelection(std::vector<Individual> &newPopulation)
   std::reverse(population.begin(), population.end()); //Sorted from better to worst
   
   population.resize(populationSize); //Discard worst elements
+}
+
+std::vector<Individual> GeneticAlgorithm::perform(unsigned int maxGenerations){
+  genesis();
+  fitness(population);
+  
+  while(maxGenerations--){
+    std::vector<Individual&> newPopulation;
+    for(int i = 0; i < populationSize; i++){
+      Individual currentIndividual;
+      
+      if((rand() % 100) <= crossoverProbability){
+        Individual &parent1 = binaryTournament();
+        Individual &parent2 = binaryTournament();
+        
+        currentIndividual = crossover(parent1, parent2);
+      }else
+        currentIndividual = binaryTournament();
+      
+      if((rand() % 100) <= mutationProbability)
+        mutation(currentIndividual);
+      
+      newPopulation.emplace_back(currentIndividual);
+    }
+  }
+  
+  return population;
 }
