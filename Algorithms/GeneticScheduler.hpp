@@ -5,16 +5,19 @@
 
 class GeneticAlgorithm {
 public:
-  std::pair<std::vector<Individual>, float> perform(unsigned int maxGenerations);
+  std::vector<Individual> perform(unsigned int);
 private:
   unsigned int populationSize;
   unsigned int initialDay;
   unsigned int finalDay;
   
+  unsigned int crossoverProbability;
+  unsigned int mutationProbability;
+  
   std::vector<Career> &careers;
   std::vector<Subject> &subjects;
   
-  std::vector<Individual> population;
+  std::vector<Individual&> population;
   
   std::pair<Individual&, float> elite;
   
