@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 #include "./GeneticScheduler.hpp"
 
@@ -34,7 +35,7 @@ void GeneticAlgorithm::genesis(){
     
 }
 
-void GeneticAlgorithm::fitness(){
+void GeneticAlgorithm::fitness(std::vector<Individual> &population){
   
 }
 
@@ -79,4 +80,13 @@ Individual &GeneticAlgorithm::binaryTournament(){
   Individual &parent2 = population[randomIndex2];
   
   return parent1 > parent2 ? parent1 : parent2;
+}
+
+void GeneticAlgorithm::survivorSelection(std::vector<Individual> &newPopulation){
+  population.insert(population.end(), newPopulation.begin(), newPopulation.end());
+  
+  std::sort(population.begin(), population.end()); //Sorted from worst to better
+  std::reverse(population.begin(), population.end()); //Sorted from better to worst
+  
+  population.resize(populationSize); //Discard worst elements
 }
