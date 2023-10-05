@@ -14,4 +14,16 @@ struct Individual{
 		individualsAmount = individual.size();
 		this->individual = individual;
 	}
+	
+	bool operator<(const Individual& a){
+		return this->fitnessScore < a.fitnessScore;
+	}
+	
+	bool operator>(const Individual& a){
+		return this->fitnessScore > a.fitnessScore;
+	}
+	
+	bool operator==(const Individual& a){
+		return this->fitnessScore == a.fitnessScore;
+	}
 };

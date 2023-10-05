@@ -20,9 +20,9 @@ private:
   
   void genesis();
   void fitness();
-  void mutation(Individual &individual); // Swap mutation
-  Individual crossover(Individual &parent1, Individual &parent2); // 1 Point crossover
-  Individual &binaryTournament(Individual &parent1, Individual &parent2);
+  void mutation(Individual&); // Swap mutation
+  Individual crossover(Individual&, Individual&); // 1 Point crossover
+  Individual &binaryTournament();
   void survivorSelection();
   float calculateSolutionFitness(Individual &solution);
 };
