@@ -35,3 +35,4 @@ private:
 
 //Consider every scheduled exam with a score of 10 - exams_on_same_day_per_career - 2(if a day before an easier exam took place) - 2(if a day after a harder exam takes place)
 //This fitness rule it's meant to keep the least amount of shared days for exams, and to avoid an increasing difficulty curve
+//For now just exams_on_same_day_per_career will be used

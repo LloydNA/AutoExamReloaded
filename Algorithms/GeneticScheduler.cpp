@@ -42,10 +42,12 @@ void GeneticAlgorithm::fitness(std::vector<Individual> &population){
 
 void GeneticAlgorithm::calculateSolutionFitness(Individual &solution){
   for(int i=0; i<solution.individualsAmount; i++){
-    solution.fitnessScore = 10.0;
+    solution.fitnessScore = 5.0;
+    unsigned int proposedDay = solution.individual[i];
     
     for(Career &a: subjects[i].assignedCareers){ //exams_on_same_day criteria
-      // change how to calculate exams per day per career per solution
+      solution.fitnessScore -= solution.careers[a.name][proposedDay];
+      solution.careers[a.name][proposedDay]++;
     }
     
   }
