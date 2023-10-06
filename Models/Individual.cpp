@@ -27,15 +27,15 @@ struct Individual{
 			careers[a.name] = std::vector<unsigned int>(12, 0);
 	}
 	
-	bool operator<(const Individual& a){
-		return this->fitnessScore < a.fitnessScore;
+	bool operator<(const Individual& a) const{
+		return this->fitnessScore < a.fitnessScore;
 	}
 	
-	bool operator>(const Individual& a){
-		return this->fitnessScore > a.fitnessScore;
+	bool operator>(const Individual& a) const{
+		return this->fitnessScore > a.fitnessScore;
 	}
 	
-	bool operator==(const Individual& a){
-		return this->fitnessScore == a.fitnessScore;
+	bool operator==(const Individual& a) const{
+		return this->fitnessScore == a.fitnessScore;
 	}
 };

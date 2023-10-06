@@ -10,11 +10,10 @@ struct Subject{
   std::vector<unsigned int> scheduledDays;
   std::vector<Career> &assignedCareers;
   
-  Subject(std::string name, float difficulty, std::vector<unsigned int> scheduledDays, std::vector<Career> &assignedCareers, bool isHumanities){
+  Subject(std::string name, float difficulty, std::vector<unsigned int> scheduledDays, std::vector<Career> &assignedCareers, bool isHumanities): assignedCareers(assignedCareers){
     this->name = name;
     this->difficulty = difficulty;
     this->scheduledDays = scheduledDays;
-    this->assignedCareers = assignedCareers;
     this->isHumanities = isHumanities;
   }
 };

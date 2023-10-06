@@ -5,7 +5,11 @@
 
 class GeneticAlgorithm {
 public:
-  std::vector<Individual> perform(unsigned int);
+    GeneticAlgorithm(unsigned int populationSize, unsigned int initialDay, unsigned int finalDay,
+                     unsigned int crossoverProbability, unsigned int mutationProbability, std::vector<Career> &careers,
+                     std::vector<Subject> &subjects);
+
+    std::vector<Individual> perform(unsigned int);
 private:
   unsigned int populationSize;
   unsigned int initialDay;
@@ -17,13 +21,11 @@ private:
   std::vector<Career> &careers;
   std::vector<Subject> &subjects;
   
-  std::vector<Individual&> population;
-  
-  std::pair<Individual&, float> elite;
+  std::vector<Individual> population;
   
   void genesis();
   void fitness(std::vector<Individual>&);
-  void mutation(Individual&); // Swap mutation
+  void mutation(Individual&); // Swap mutation might not be a good idea, change it to something like bit flip or a mix between both
   Individual crossover(Individual&, Individual&); // 1 Point crossover
   Individual &binaryTournament();
   void survivorSelection(std::vector<Individual>&);
