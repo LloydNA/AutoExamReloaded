@@ -1,7 +1,8 @@
 #include <vector>
-#include "../Models/Career.cpp"
+//#include "../Models/Career.cpp"
 #include "../Models/Subject.cpp"
 #include "../Models/Individual.cpp"
+#include <PerformanceMeasurer.hpp>
 
 class GeneticAlgorithm {
 public:
@@ -22,6 +23,8 @@ private:
   std::vector<Subject> &subjects;
   
   std::vector<Individual> population;
+
+  PerformanceMeasurer *performanceMeasurer;
   
   void genesis();
   void fitness(std::vector<Individual>&);

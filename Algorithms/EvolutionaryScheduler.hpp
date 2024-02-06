@@ -1,4 +1,4 @@
-#include <vector>
+/*#include <vector>
 #import "../Models/Career.cpp"
 #import "../Models/Subject.cpp"
 #import "../Models/Individual.cpp"
@@ -38,4 +38,4 @@ private:
 
 //This algorithm will be similar to Sin prediction one, we will have a constant modifier (gamma) for each sigma, and each sigma will be the origin for a gaussian distribution
 //To select scheduled day.
-//Maybe an evolutionary algorithm is not the most efficient approach for a scheduling, but it's worth trying =)
+//Maybe an evolutionary algorithm is not the most efficient approach for a scheduling, but it's worth trying =)*/
