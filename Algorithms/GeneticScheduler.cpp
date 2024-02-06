@@ -25,7 +25,7 @@ void GeneticAlgorithm::genesis(){
   for(unsigned int i = 0; i < populationSize; i++){
     Individual currentIndividual(sz, careers);
     for(unsigned int j = 0; j < sz; j++){
-      if(subjects[j].isHumanities){
+      if(subjects[j].isHumanities || subjects[j].name == "2192"){
           for(int k = 0; k < subjects[j].scheduledDays.size(); k++)
               if(subjects[j].scheduledDays[k] >= initialDay && subjects[j].scheduledDays[k] <= finalDay){
                   currentIndividual.individual[j] = subjects[j].scheduledDays[k]; //Assuming that scheduled days are sorted
@@ -139,9 +139,11 @@ std::vector<Individual> GeneticAlgorithm::perform(unsigned int maxGenerations){
         Individual &parent2 = binaryTournament();
         
         newPopulation.emplace_back(crossover(parent1, parent2));
-      }else
-        newPopulation.emplace_back(binaryTournament());
-      
+      }else{
+          Individual parent = binaryTournament();
+          newPopulation.emplace_back(parent);
+      }
+
       if((rand() % 100) <= mutationProbability)
         mutation(newPopulation.back());
     }
